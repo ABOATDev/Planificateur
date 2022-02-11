@@ -31,10 +31,14 @@ class Personne(models.Model):
         default=NORMAL,
         max_length=200
     )
+
+
+    # Liste de tache de la personne
+    taches = models.ManyToManyField('Tache',null=True,blank=True)
+
+
     def __str__(self):
         return(self.nom+' '+self.prenom)
-
-  
 
 
 class Projet(models.Model):    
@@ -84,18 +88,18 @@ class Tache(models.Model):
     id = models.BigAutoField(primary_key=True) 
 
     #La tache est relié à un projet
-    projet = models.ForeignKey(Projet, on_delete=models.SET_NULL, null=True)   
-
-    #La tache est relié à liste de personne
-    #personne = models.ForeignKey(Personne, on_delete=models.SET_NULL, null=True)
-    developpeur = models.ManyToManyField(Personne)
+    projet = models.ForeignKey(Projet, on_delete=models.SET_NULL, null=True)
 
 
     #La tache est relié à un évaluateur
     evaluateur = models.ForeignKey(Personne, on_delete=models.SET_NULL, null=True)
 
     # La tache peut avoir 0 ou UNE tache parente
-    tacheParente = models.ForeignKey('Tache', on_delete=models.SET_NULL, null=True) 
+    tacheParente = models.ForeignKey('Tache', on_delete=models.SET_NULL, null=True, blank=True)
+
+
+    # # Une liste de tache qui peut avoir 0 a plusieur tache
+    # tacheDependance = models.ManyToManyField('Tache', through='TachePersonne',null=True,blank=True)
 
 
     # Nom de la tache
@@ -127,5 +131,9 @@ class Tache(models.Model):
     etat_avancement = models.IntegerField(default=1)
     
 
+    # 
+
     def __str__(self):
         return(self.description+'\nPriorité\t\t\t: '+str(self.priorite)+'\nDate de début\t\t: '+str(self.date_debut)+'\nStatut\t\t\t: '+str(self.statut)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
+
+
