@@ -86,8 +86,13 @@ class Tache(models.Model):
     #La tache est relié à un projet
     projet = models.ForeignKey(Projet, on_delete=models.SET_NULL, null=True)   
 
-    #La tache est relié à une personne
-    personne = models.ForeignKey(Personne, on_delete=models.SET_NULL, null=True)
+    #La tache est relié à liste de personne
+    #personne = models.ForeignKey(Personne, on_delete=models.SET_NULL, null=True)
+    developpeur = models.ManyToManyField(Personne)
+
+
+    #La tache est relié à un évaluateur
+    evaluateur = models.ForeignKey(Personne, on_delete=models.SET_NULL, null=True)
 
     # La tache peut avoir 0 ou UNE tache parente
     tacheParente = models.ForeignKey('Tache', on_delete=models.SET_NULL, null=True) 
