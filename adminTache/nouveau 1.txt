@@ -1,0 +1,24 @@
+Pour faire un planning :
+* Identifier les tâches à réaliser grosse maille (tâches conséquentes mais peu de tâche)
+   * Nom
+   * Description
+   * Etape de référence (pour la rédaction du mémoire)
+* Estimation du temps de réalisation de chaque tâche
+   * Si tâche déjà réalisée dans un autre contexte, partir du temps de réalisation dans ce contexte et préciser dans le nouveau contexte
+   * Sinon prendre le nombre de tâches à réaliser, le temps disponible et vous faites une répartition sommaire (temps/nbTache)
+* Ordonnancer les tâches par contrainte de réalisation ou temporelle/compétences
+   * Prioriser les tâches en fonction 
+      * des contraintes qu'elles ont les unes avec les autres (pas possible de rédiger l'intro des points sans un plan détaillé)
+      * de vos disponibilités et compétences
+* Répartition des tâches dans le temps 
+   * utilisation d'une frise temporelle pour la réalisation des tâches avec un granularité par mois/années
+    TÂCHES   |            Mois1                     ||               Mois2                  ||              Mois3                   |
+-------------|--------------------------------------||--------------------------------------||--------------------------------------|
+    Tache 1  |                x                     ||                  x                   ||                                      |
+-------------|--------------------------------------||--------------------------------------||--------------------------------------|
+    Tache 2  |                                      ||                  x                   ||                 x                    |
+-------------|--------------------------------------||--------------------------------------||--------------------------------------|
+    Tache 3  |                                      ||                                      ||                  x                   |
+-------------|--------------------------------------||--------------------------------------||--------------------------------------|
+Puis redéfinir chaque tâche avec des sous-tâches, affiner l'estimation prioriser les sous-tâches et les ordonnancer dans le temps
+Et on recommence juisqu'à obtenir un niveau de granularité de l'ordre de l'heure/jour
