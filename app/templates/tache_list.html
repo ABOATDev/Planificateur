@@ -2,7 +2,7 @@
 <br>
 <ul>
 {% for tache in object_list %}
-   <li> <a href='../tache/{{ tache.id }}'>{{ tache.libelle }}</a> - {{ tache.description }} || <a href='../projets/{{ tache.projet.id }}'>{{ tache.projet }}</a></li>
+   <li> TACHE : <a href='../tache/{{ tache.id }}'>{{ tache.libelle }}</a> - {{ tache.description }} <br> PROJET : <a href='../projet/{{ tache.projet.id }}'>{{ tache.projet }}</a> <br> Evaluateur : <a href='../personne/{{ tache.evaluateur.id }}'>{{ tache.evaluateur.nom }} {{ tache.evaluateur.prenom }}</a></li><br>
 {% empty %}
     <li>Aucune taches</li>
 {% endfor %}

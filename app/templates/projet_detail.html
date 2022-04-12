@@ -1,0 +1,10 @@
+
+<h1>Détail du projet : {{ object.libelle }}</h1>
+<p>Date de livraison : {{ object.date_livraison }}</p>
+<p>Status : {{ object.status }}h</p>
+<p>État avancement : {{object.etat_avancement}} </p>
+<p>Status : {{object.status}}</p>
+<p>Date de début : {{object.date_debut}} </p>
+<p>Responsable : <a href='..\..\personne\{{object.responsable.id}}'> {{object.responsable.nom}} {{object.responsable.prenom}}</a></p>
+<p>Toutes les tâches : <a href='..\..\tacheByProjet\{{object.id}}'> Les taches</a></p>
+<a href='..\'> Revenir à la liste </a>

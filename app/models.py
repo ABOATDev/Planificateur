@@ -76,8 +76,7 @@ class Projet(models.Model):
     #default=datetime.now(timezone(timedelta(0)))
 
     # Responsable du projet null 
-    responsable = models.ForeignKey(# A model for a person.
-    Personne,null=True,blank=True, on_delete=models.SET_NULL)   
+    responsable = models.ForeignKey(Personne,null=True,blank=True, on_delete=models.SET_NULL)   
 
     def __str__(self):
         return(self.libelle+'\nDate de livraison\t: '+str(self.date_livraison)+'\nstatus\t\t\t: '+str(self.status)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
@@ -134,8 +133,6 @@ class Tache(models.Model):
     # L'etat de l'avancement de la tache est définie par un nombre entre 1 et 3
     etat_avancement = models.IntegerField(default=1)
     
-
-    # 
 
     def __str__(self):
         return(self.description+'\nPriorité\t\t\t: '+str(self.priorite)+'\nDate de début\t\t: '+str(self.date_debut)+'\nstatus\t\t\t: '+str(self.status)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))

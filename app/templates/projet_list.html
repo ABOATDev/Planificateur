@@ -1,0 +1,10 @@
+<h1>Listes de toute les projets : </h1>
+<br>
+<ul>
+{% for projet in object_list %}
+   <li> <a href='../projet/{{ projet.id }}'>{{projet.id}} : {{ projet.libelle }}</a> -- <a href='../tacheByProjet/{{ projet.id }}'> Voir les taches associés</a></li>
+{% empty %}
+    <li>Aucune projet</li>
+{% endfor %}
+</ul>
+<a href='../'> Revenir à l'index </a>

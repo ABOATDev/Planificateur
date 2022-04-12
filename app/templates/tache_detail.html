@@ -1,8 +1,10 @@
-<h1>{{ object.libelle }} : {{ object.status }} </h1>
+<h1>Tache : {{ object.libelle }} : {{ object.status }} </h1>
 <p>Description {{ object.description }}</p>
 <p>Priorité: {{ object.priorite }}h</p>
 <p>Date de début : {{ object.date_debut }}</p>
-<p>status : {{ object.status }}</p>
-<p>etat_avancement : {{ object.etat_avancement }} </p> 
-<p> L'objet a été interrogé {{ now|date }}</p>
+<p>Status : {{ object.status }}</p>
+<p>État de l'avancement : {{object.etat_avancement}} </p> 
+<p>L'objet a été interrogé {{ now|date }}</p>
+<p>Projet : <a href='..\..\projet\{{object.projet.id}}'>{{object.projet.libelle}}</a></p>
+<p>Evaluateur : <a href='..\..\projet\{{object.evaluateur.id}}'>{{object.evaluateur.nom}} {{object.evaluateur.prenom}}</a></p>
 <a href='..\'> Revenir à la liste </a>

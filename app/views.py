@@ -9,15 +9,14 @@ from django.utils import timezone
 
 # Create your views here.
 def index(request):
-    formulaire='<form action="" method="post"><input type="submit" value="Rechercher"></form>'
-    temp=Template(formulaire
-    +"<br><a href='tache'>Afficher la liste des tâches</a>"
+    temp=Template(
+    "<br><a href='tache'>Afficher la liste des tâches</a>"
     +"<br><a href='personne'>Afficher la liste des personnes</a>"
     +"<br><a href='projet'>Afficher la liste des projets</a>")
     context =RequestContext(request)
     return HttpResponse(temp.render(context))  
 
-# Create your views here.
+# Tache
 class tacheListDetailView(generic.list.ListView):
     model=Tache
     template_name='tache_list.html'
@@ -33,6 +32,20 @@ class tacheDetailView(generic.detail.DetailView):
         context['now']=timezone.now()
         return context
 
+class tacheByProjetListDetailView(generic.list.ListView):
+    # get all taches by projet
+    model=Tache
+    template_name='tacheByProjet_list.html'
+    
+    def get_queryset(self):
+        return Tache.objects.filter(projet=self.kwargs['pk'])
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['projet'] = Projet.objects.get(pk=self.kwargs['pk'])
+
+        return context
+
+# Personne
 class personneListDetailView(generic.list.ListView):
     model=Personne
     template_name='personne_list.html'
@@ -45,4 +58,20 @@ class personneDetailView(generic.detail.DetailView):
     template_name='personne_detail.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        return context
+
+# Projet
+class projetListDetailView(generic.list.ListView):
+    model=Projet
+    template_name='projet_list.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+class projetDetailView(generic.detail.DetailView):
+    model=Projet
+    template_name='projet_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now']=timezone.now()
         return context

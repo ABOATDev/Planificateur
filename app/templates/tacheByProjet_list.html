@@ -1,0 +1,10 @@
+<h1>Listes de toute les taches par le projet N°{{projet.id}} {{projet.libelle}}</h1>
+<br>
+<ul>
+{% for tache in object_list %}
+   <li> TACHE : <a href='../../tache/{{ tache.id }}'>{{ tache.libelle }}</a> - {{ tache.description }} <br> PROJET : <a href='../../projet/{{ tache.projet.id }}'>{{ tache.projet }}</a> <br> Evaluateur : <a href='../../personne/{{ tache.evaluateur.id }}'>{{ tache.evaluateur.nom }} {{ tache.evaluateur.prenom }}</a>  </li><br>
+{% empty %}
+    <li>Aucune tache relier au projet choisis</li>
+{% endfor %}
+</ul>
+<a href='../../projet'> Revenir à l'index </a>
