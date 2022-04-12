@@ -18,7 +18,7 @@ class Personne(models.Model):
     ABSENT  = "ABSENT"
     NORMAL  = "NORMAL"
 
-    STATUT_CHOICES = (
+    STATUS_CHOICES = (
         (CONGE, 'FINI'),
         (MALADE,  'EST MALADE'),
         (VIENSDARRIVE, 'VIENS DARRIVER'),
@@ -27,7 +27,7 @@ class Personne(models.Model):
     )
     # Le statut de la personne est défini par un choix dans la liste STATUT_CHOICES
     statut = models.CharField(
-        choices=STATUT_CHOICES,
+        choices=STATUS_CHOICES,
         default=NORMAL,
         max_length=200
     )
@@ -45,7 +45,7 @@ class Projet(models.Model):
     id = models.BigAutoField(primary_key=True) #clé primaire de l'entité autoincrémentée
 
     #description VARCHAR(250),
-    libelle = models.CharField(max_length=250, default="Tache sans nom")
+    libelle = models.CharField(max_length=250, default="Projet sans nom")
 
     #date_livraison DATE NOT NULL,
     date_livraison = models.DateField(null=False)
@@ -74,11 +74,11 @@ class Projet(models.Model):
     date_debut = models.DateTimeField(auto_now_add=True)
     #default=datetime.now(timezone(timedelta(0)))
 
-    # Responsable du projet
-    responsable = models.ForeignKey(Personne,null=True, on_delete=models.SET_NULL)   
+    # Responsable du projet null 
+    responsable = models.ForeignKey(Personne,null=True,blank=True, on_delete=models.SET_NULL)   
 
     def __str__(self):
-        return(self.libelle+'\nDate de livraison\t: '+str(self.date_livraison)+'\nStatut\t\t\t: '+str(self.statut)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
+        return(self.libelle+'\nDate de livraison\t: '+str(self.date_livraison)+'\nstatus\t\t\t: '+str(self.status)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
 
 
 # Une tâche est identifiée par un ID autoincrémenté et consiste en une durée (en heure) et une description (max 200 car) 
@@ -103,7 +103,7 @@ class Tache(models.Model):
 
 
     # Nom de la tache
-    libelle = models.CharField(max_length=200)
+    libelle = models.CharField(max_length=200,default="Tache sans nom")
 
     # La priorité de la tache est définie par un nombre entre 1 et 3
     priorite = models.IntegerField(default=1)
@@ -114,15 +114,15 @@ class Tache(models.Model):
     FINI = 'FINI'
     ENCOURS = 'EN COURS'
     ACOMMENCER = 'A COMMENCER'
-    STATUT_CHOICES = (
+    status_CHOICES = (
         (FINI, 'FINI'),
         (ENCOURS, 'EN COURS'),
         (ACOMMENCER, 'A COMMENCER')
     )
 
-    # Le statut de la tache est défini par un choix dans la liste STATUT_CHOICES
+    # Le status de la tache est défini par un choix dans la liste status_CHOICES
     status = models.CharField(
-        choices=STATUT_CHOICES,
+        choices=status_CHOICES,
         default=ACOMMENCER,
         max_length=200
     )
@@ -134,6 +134,6 @@ class Tache(models.Model):
     # 
 
     def __str__(self):
-        return(self.description+'\nPriorité\t\t\t: '+str(self.priorite)+'\nDate de début\t\t: '+str(self.date_debut)+'\nStatut\t\t\t: '+str(self.statut)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
+        return(self.description+'\nPriorité\t\t\t: '+str(self.priorite)+'\nDate de début\t\t: '+str(self.date_debut)+'\nstatus\t\t\t: '+str(self.status)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
 
 
