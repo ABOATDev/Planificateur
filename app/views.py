@@ -10,8 +10,10 @@ from django.utils import timezone
 # Create your views here.
 def index(request):
     formulaire='<form action="" method="post"><input type="submit" value="Rechercher"></form>'
-    temp=Template(formulaire+"<br><a href='list'>Afficher la liste des tâches</a>"
-    +"<br><a href='personne'>Afficher la liste des personnes</a>")
+    temp=Template(formulaire
+    +"<br><a href='tache'>Afficher la liste des tâches</a>"
+    +"<br><a href='personne'>Afficher la liste des personnes</a>"
+    +"<br><a href='projet'>Afficher la liste des projets</a>")
     context =RequestContext(request)
     return HttpResponse(temp.render(context))  
 
@@ -21,8 +23,14 @@ class tacheListDetailView(generic.list.ListView):
     template_name='tache_list.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        for object in self.object_list:
-            object.faite = object.status
+        return context
+
+class tacheDetailView(generic.detail.DetailView):
+    model=Tache
+    template_name='tache_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now']=timezone.now()
         return context
 
 class personneListDetailView(generic.list.ListView):

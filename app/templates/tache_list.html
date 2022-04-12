@@ -1,7 +1,10 @@
+<h1>Listes de toute les taches: </h1>
+<br>
 <ul>
 {% for tache in object_list %}
-    <a href='../{{ tache.id }}'><li>{{ tache.titre }}</li></a>
+   <li> <a href='../tache/{{ tache.id }}'>{{ tache.libelle }}</a> - {{ tache.description }} || <a href='../projets/{{ tache.projet.id }}'>{{ tache.projet }}</a></li>
 {% empty %}
-    <li>No articles yet.</li>
+    <li>Aucune taches</li>
 {% endfor %}
 </ul>
+<a href='../'> Revenir à l'index </a>

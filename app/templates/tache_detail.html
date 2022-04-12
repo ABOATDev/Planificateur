@@ -1,6 +1,8 @@
-<h1>{{ object.titre }} : {{ object.faite }} </h1>
+<h1>{{ object.libelle }} : {{ object.status }} </h1>
 <p>Description {{ object.description }}</p>
-<p>Durée: {{ object.duree }}h</p>
-<p>Séance: {{ object.seance }}</p>
-<p> L'objet a été interrogé à {{ now|date }}</p>
-<a href='../list'> Revenir à la liste </a>
+<p>Priorité: {{ object.priorite }}h</p>
+<p>Date de début : {{ object.date_debut }}</p>
+<p>status : {{ object.status }}</p>
+<p>etat_avancement : {{ object.etat_avancement }} </p> 
+<p> L'objet a été interrogé {{ now|date }}</p>
+<a href='..\'> Revenir à la liste </a>
