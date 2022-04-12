@@ -1,0 +1,7 @@
+<ul>
+  {% for personne in object_list %}
+  <a href='{{ personne.id }}'><li>{{ personne }}</li></a>
+  {% empty %}
+  <li>No articles yet.</li>
+  {% endfor %}
+</ul>
