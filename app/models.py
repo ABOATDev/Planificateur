@@ -6,7 +6,8 @@ from datetime import timezone,timedelta,datetime
 
 
 class Personne(models.Model):    
-    id = models.BigAutoField(primary_key=True) #clé primaire de l'entité autoincrémentée
+    #clé primaire de l'entité autoincrémentée
+    id = models.BigAutoField(primary_key=True) 
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
 
@@ -75,7 +76,8 @@ class Projet(models.Model):
     #default=datetime.now(timezone(timedelta(0)))
 
     # Responsable du projet null 
-    responsable = models.ForeignKey(Personne,null=True,blank=True, on_delete=models.SET_NULL)   
+    responsable = models.ForeignKey(# A model for a person.
+    Personne,null=True,blank=True, on_delete=models.SET_NULL)   
 
     def __str__(self):
         return(self.libelle+'\nDate de livraison\t: '+str(self.date_livraison)+'\nstatus\t\t\t: '+str(self.status)+'\nEtat d\'avancement\t: '+str(self.etat_avancement))
@@ -104,6 +106,8 @@ class Tache(models.Model):
 
     # Nom de la tache
     libelle = models.CharField(max_length=200,default="Tache sans nom")
+
+    description = models.CharField(max_length=200,default="Tache sans description")
 
     # La priorité de la tache est définie par un nombre entre 1 et 3
     priorite = models.IntegerField(default=1)

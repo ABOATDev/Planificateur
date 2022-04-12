@@ -1,0 +1,7 @@
+<ul>
+{% for tache in object_list %}
+    <a href='../{{ tache.id }}'><li>{{ tache.titre }}</li></a>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
