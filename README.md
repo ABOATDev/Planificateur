@@ -3,6 +3,10 @@ Création d'un planificateur de tâche, en django.
 
 Projet de l'école informatique IPI BAC+3 [CDA (Concepteur Développeur d’Applications)](https://www.ipi-ecoles.com/concepteur-developpeur-applications/).
 
+Par l'intervenant François-xavier A.
+
+Réalisé en groupe : Réda G. & Bastien M. 
+
 Temps passé sur le projet : 6 heures
 
 ## Avant-propos et conseils de réalisation
